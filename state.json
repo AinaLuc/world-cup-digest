@@ -22,6 +22,7 @@
     "Portugal_vs_DR_Congo_1-1",
     "Qatar_vs_Switzerland_1-1",
     "Saudi_Arabia_vs_Uruguay_1-1",
+    "Scotland_vs_Morocco_0-1",
     "South_Korea_vs_Czech_Republic_2-1",
     "Spain_vs_Cape_Verde_0-0",
     "Sweden_vs_Tunisia_5-1",
@@ -30,8 +31,9 @@
     "United_States_vs_Paraguay_4-1",
     "Uzbekistan_vs_Colombia_1-3"
   ],
-  "last_run": "2026-06-20T02:00:07.047253+00:00",
+  "last_run": "2026-06-20T06:51:06.899463+00:00",
   "pending": {
-    "Scotland_vs_Morocco_0-1": "2026-06-20T01:19:09.132645+00:00"
+    "Brazil_vs_Haiti_3-0": "2026-06-20T06:51:06.899463+00:00",
+    "Turkey_vs_Paraguay_0-1": "2026-06-20T06:51:06.899463+00:00"
   }
 }
