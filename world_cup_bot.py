@@ -17,7 +17,7 @@ import smtplib
 import ssl
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
@@ -30,6 +30,13 @@ from bs4 import BeautifulSoup
 WORLD_CUP_YEAR = 2026
 WIKI_URL = f"https://en.wikipedia.org/wiki/{WORLD_CUP_YEAR}_FIFA_World_Cup"
 STATE_FILE = Path(__file__).parent / "state.json"
+
+# How long to wait after first detecting a completed match before emailing,
+# so YouTube highlight uploads have time to appear. The cron runs every 3h,
+# so this guarantees at least this much delay on top of cron cadence.
+HIGHLIGHT_WAIT_HOURS = float(os.environ.get("HIGHLIGHT_WAIT_HOURS", "3"))
+# FORCE=1 bypasses the wait window (useful for manual re-triggers).
+FORCE = os.environ.get("FORCE", "0") == "1"
 
 GMAIL_USER = os.environ.get("GMAIL_USER", "")
 GMAIL_APP_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD", "")
@@ -48,7 +55,7 @@ def load_state() -> dict:
             return json.loads(STATE_FILE.read_text(encoding="utf-8"))
         except Exception:
             pass
-    return {"emailed": []}
+    return {"emailed": [], "pending": {}}
 
 
 def save_state(state: dict) -> None:
@@ -371,31 +378,63 @@ def send_email(subject: str, html: str) -> None:
 def main() -> int:
     state = load_state()
     already_emailed = set(state.get("emailed", []))
+    pending: dict = state.get("pending", {})  # key -> first_seen ISO timestamp
+    now = datetime.now(timezone.utc)
 
     all_matches = fetch_matches()
-    new_matches = [m for m in all_matches if m["key"] not in already_emailed]
 
-    if not new_matches:
-        print("No new matches to email.", file=sys.stderr)
+    # --- Stage 1: register every newly-completed match as "pending" ---
+    newly_seen = []
+    for m in all_matches:
+        if m["key"] in already_emailed or m["key"] in pending:
+            continue
+        pending[m["key"]] = now.isoformat()
+        newly_seen.append(m["key"])
+    if newly_seen:
+        print(f"Newly detected (now waiting {HIGHLIGHT_WAIT_HOURS}h for highlights): "
+              f"{', '.join(newly_seen)}", file=sys.stderr)
+    state["pending"] = pending
+
+    # --- Stage 2: pick pending matches that have waited long enough ---
+    wait = timedelta(hours=HIGHLIGHT_WAIT_HOURS) if not FORCE else timedelta(0)
+    ready = []
+    still_pending: dict = {}
+    for m in all_matches:
+        key = m["key"]
+        if key in already_emailed:
+            continue
+        first_seen = datetime.fromisoformat(pending[key])
+        if now - first_seen >= wait:
+            ready.append(m)
+        else:
+            remaining = (wait - (now - first_seen)).total_seconds() / 60
+            print(f"  Pending: {key} — {remaining:.0f} min until eligible", file=sys.stderr)
+            still_pending[key] = pending[key]
+    state["pending"] = still_pending
+    # Persist state now so a crash mid-run doesn't lose the first_seen timestamps.
+    state["last_run"] = now.isoformat()
+    save_state(state)
+
+    if not ready:
+        print("No matches ready to email yet.", file=sys.stderr)
         return 0
 
-    print(f"Found {len(new_matches)} new match(es) to email", file=sys.stderr)
+    print(f"Ready to email: {len(ready)} match(es)", file=sys.stderr)
 
-    for m in new_matches:
+    for m in ready:
         print(f"Searching YouTube highlights for: {m['team1']} vs {m['team2']}", file=sys.stderr)
         yt = find_youtube_highlight(m["team1"], m["team2"])
         m["yt"] = yt
         if yt:
             print(f"  -> {yt['url']} ({yt['title']})", file=sys.stderr)
         else:
-            print(f"  -> no highlight found", file=sys.stderr)
+            print(f"  -> no highlight found (will send anyway)", file=sys.stderr)
 
-    subject, html = render_email(new_matches)
+    subject, html = render_email(ready)
     send_email(subject, html)
 
-    already_emailed.update(m["key"] for m in new_matches)
+    already_emailed.update(m["key"] for m in ready)
     state["emailed"] = sorted(already_emailed)
-    state["last_run"] = datetime.now(timezone.utc).isoformat()
     save_state(state)
     print(f"State saved ({len(state['emailed'])} total matches emailed)", file=sys.stderr)
     return 0
