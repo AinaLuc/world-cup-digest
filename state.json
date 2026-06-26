@@ -28,6 +28,7 @@
     "Iran_vs_New_Zealand_2-2",
     "Iraq_vs_Norway_1-4",
     "Ivory_Coast_vs_Ecuador_1-0",
+    "Japan_vs_Sweden_1-1",
     "Jordan_vs_Algeria_1-2",
     "Mexico_vs_South_Africa_2-0",
     "Mexico_vs_South_Korea_1-0",
@@ -51,15 +52,16 @@
     "Switzerland_vs_Bosnia_and_Herzegovina_4-1",
     "Switzerland_vs_Canada_2-1",
     "Tunisia_vs_Japan_0-4",
+    "Tunisia_vs_Netherlands_1-3",
     "Turkey_vs_Paraguay_0-1",
     "United_States_vs_Australia_2-0",
     "United_States_vs_Paraguay_4-1",
     "Uruguay_vs_Cape_Verde_2-2",
     "Uzbekistan_vs_Colombia_1-3"
   ],
-  "last_run": "2026-06-26T01:58:09.286744+00:00",
+  "last_run": "2026-06-26T06:40:02.923053+00:00",
   "pending": {
-    "Japan_vs_Sweden_1-1": "2026-06-26T01:58:09.286744+00:00",
-    "Tunisia_vs_Netherlands_1-3": "2026-06-26T01:58:09.286744+00:00"
+    "Paraguay_vs_Australia_0-0": "2026-06-26T06:40:02.923053+00:00",
+    "Turkey_vs_United_States_3-2": "2026-06-26T06:40:02.923053+00:00"
   }
 }
