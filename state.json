@@ -11,12 +11,14 @@
     "Brazil_vs_Morocco_1-1",
     "Canada_vs_Bosnia_and_Herzegovina_1-1",
     "Canada_vs_Qatar_6-0",
+    "Cape_Verde_vs_Saudi_Arabia_0-0",
     "Colombia_vs_DR_Congo_1-0",
     "Cura\u00e7ao_vs_Ivory_Coast_0-2",
     "Czech_Republic_vs_Mexico_0-3",
     "Czech_Republic_vs_South_Africa_1-1",
     "Ecuador_vs_Cura\u00e7ao_0-0",
     "Ecuador_vs_Germany_2-1",
+    "Egypt_vs_Iran_1-1",
     "England_vs_Croatia_4-2",
     "England_vs_Ghana_0-0",
     "France_vs_Iraq_3-0",
@@ -35,6 +37,7 @@
     "Morocco_vs_Haiti_4-2",
     "Netherlands_vs_Japan_2-2",
     "Netherlands_vs_Sweden_5-1",
+    "New_Zealand_vs_Belgium_1-5",
     "New_Zealand_vs_Egypt_1-3",
     "Norway_vs_France_1-4",
     "Norway_vs_Senegal_3-2",
@@ -61,13 +64,9 @@
     "United_States_vs_Australia_2-0",
     "United_States_vs_Paraguay_4-1",
     "Uruguay_vs_Cape_Verde_2-2",
+    "Uruguay_vs_Spain_0-1",
     "Uzbekistan_vs_Colombia_1-3"
   ],
-  "last_run": "2026-06-27T06:18:14.335199+00:00",
-  "pending": {
-    "Cape_Verde_vs_Saudi_Arabia_0-0": "2026-06-27T06:18:14.335199+00:00",
-    "Egypt_vs_Iran_1-1": "2026-06-27T06:18:14.335199+00:00",
-    "New_Zealand_vs_Belgium_1-5": "2026-06-27T06:18:14.335199+00:00",
-    "Uruguay_vs_Spain_0-1": "2026-06-27T06:18:14.335199+00:00"
-  }
+  "last_run": "2026-06-27T10:50:21.403262+00:00",
+  "pending": {}
 }
