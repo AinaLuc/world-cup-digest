@@ -13,9 +13,12 @@
     "Canada_vs_Qatar_6-0",
     "Cape_Verde_vs_Saudi_Arabia_0-0",
     "Colombia_vs_DR_Congo_1-0",
+    "Colombia_vs_Portugal_0-0",
+    "Croatia_vs_Ghana_2-1",
     "Cura\u00e7ao_vs_Ivory_Coast_0-2",
     "Czech_Republic_vs_Mexico_0-3",
     "Czech_Republic_vs_South_Africa_1-1",
+    "DR_Congo_vs_Uzbekistan_3-1",
     "Ecuador_vs_Cura\u00e7ao_0-0",
     "Ecuador_vs_Germany_2-1",
     "Egypt_vs_Iran_1-1",
@@ -42,6 +45,7 @@
     "Norway_vs_France_1-4",
     "Norway_vs_Senegal_3-2",
     "Panama_vs_Croatia_0-1",
+    "Panama_vs_England_0-2",
     "Paraguay_vs_Australia_0-0",
     "Portugal_vs_DR_Congo_1-1",
     "Portugal_vs_Uzbekistan_5-0",
@@ -67,11 +71,9 @@
     "Uruguay_vs_Spain_0-1",
     "Uzbekistan_vs_Colombia_1-3"
   ],
-  "last_run": "2026-06-28T02:02:09.726187+00:00",
+  "last_run": "2026-06-28T06:48:58.877013+00:00",
   "pending": {
-    "Colombia_vs_Portugal_0-0": "2026-06-28T02:02:09.726187+00:00",
-    "Croatia_vs_Ghana_2-1": "2026-06-28T02:02:09.726187+00:00",
-    "DR_Congo_vs_Uzbekistan_3-1": "2026-06-28T02:02:09.726187+00:00",
-    "Panama_vs_England_0-2": "2026-06-28T02:02:09.726187+00:00"
+    "Algeria_vs_Austria_3-3": "2026-06-28T06:48:58.877013+00:00",
+    "Jordan_vs_Argentina_1-3": "2026-06-28T06:48:58.877013+00:00"
   }
 }
