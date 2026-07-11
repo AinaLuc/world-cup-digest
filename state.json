@@ -74,6 +74,7 @@
     "South_Africa_vs_South_Korea_1-0",
     "South_Korea_vs_Czech_Republic_2-1",
     "Spain_vs_Austria_3-0",
+    "Spain_vs_Belgium_2-1",
     "Spain_vs_Cape_Verde_0-0",
     "Spain_vs_Saudi_Arabia_4-0",
     "Sweden_vs_Tunisia_5-1",
@@ -92,8 +93,6 @@
     "Uruguay_vs_Spain_0-1",
     "Uzbekistan_vs_Colombia_1-3"
   ],
-  "last_run": "2026-07-10T21:47:12.819516+00:00",
-  "pending": {
-    "Spain_vs_Belgium_2-1": "2026-07-10T21:47:12.819516+00:00"
-  }
+  "last_run": "2026-07-11T01:16:13.652991+00:00",
+  "pending": {}
 }
